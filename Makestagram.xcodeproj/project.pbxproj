@@ -38,6 +38,8 @@
 		EF19A5D71D22E8E300373D6D /* FriendsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A5D61D22E8E300373D6D /* FriendsSearchViewController.swift */; };
 		EF19A5DC1D22EF2800373D6D /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A5DB1D22EF2800373D6D /* PhotoTakingHelper.swift */; };
 		EF19A5DF1D2432FF00373D6D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A5DE1D2432FF00373D6D /* Post.swift */; };
+		EF19A5E31D2465E500373D6D /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A5E21D2465E500373D6D /* PostTableViewCell.swift */; };
+		EF19A5E51D246F0700373D6D /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF19A5E41D246F0700373D6D /* ParseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		EF19A5D61D22E8E300373D6D /* FriendsSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsSearchViewController.swift; sourceTree = "<group>"; };
 		EF19A5DB1D22EF2800373D6D /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		EF19A5DE1D2432FF00373D6D /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EF19A5E21D2465E500373D6D /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		EF19A5E41D246F0700373D6D /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,6 +195,7 @@
 			children = (
 				6277189D1B0A58E800AF5C6E /* ErrorHandling.swift */,
 				6277189E1B0A58E800AF5C6E /* ParseLoginHelper.swift */,
+				EF19A5E41D246F0700373D6D /* ParseHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +223,7 @@
 		62C8C1E21B06BD6500DC3EA7 /* Makestagram */ = {
 			isa = PBXGroup;
 			children = (
+				EF19A5E01D2465BD00373D6D /* Views */,
 				EF19A5DD1D2432B600373D6D /* Models */,
 				EF19A5DA1D22EF0000373D6D /* PhotoTaking */,
 				6277189C1B0A58E800AF5C6E /* Helpers */,
@@ -282,6 +288,22 @@
 				EF19A5DE1D2432FF00373D6D /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		EF19A5E01D2465BD00373D6D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A5E11D2465BD00373D6D /* Timeline */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EF19A5E11D2465BD00373D6D /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				EF19A5E21D2465E500373D6D /* PostTableViewCell.swift */,
+			);
+			path = Timeline;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +525,8 @@
 				EF19A5D51D22E8CC00373D6D /* PhotoViewController.swift in Sources */,
 				62C8C1E61B06BD6500DC3EA7 /* AppDelegate.swift in Sources */,
 				627718971B0A581700AF5C6E /* FilterViewController.swift in Sources */,
+				EF19A5E51D246F0700373D6D /* ParseHelper.swift in Sources */,
+				EF19A5E31D2465E500373D6D /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
