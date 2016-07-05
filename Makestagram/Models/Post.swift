@@ -8,10 +8,12 @@
 
 import Foundation
 import Parse
+import Bond
 
 // 1
 class Post : PFObject, PFSubclassing {
-    var image: UIImage?
+    var likes: Observable<[PFUser]?> = Observable(nil)
+    var image: Observable<UIImage?> = Observable(nil)
     var photoUploadTask: UIBackgroundTaskIdentifier?
     
     // 2
@@ -40,7 +42,8 @@ class Post : PFObject, PFSubclassing {
     }
     
     func uploadPost() {
-        if let image = image {
+        if let image = image.value {
+            
             guard let imageData = UIImageJPEGRepresentation(image, 0.8) else {return}
             guard let imageFile = PFFile(name: "image.jpg", data: imageData) else {return}
             
@@ -51,9 +54,45 @@ class Post : PFObject, PFSubclassing {
                 UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
             }
             
-            saveInBackgroundWithBlock() { (success: Bool, error: NSError?) in
+            saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                 UIApplication.sharedApplication().endBackgroundTask(self.photoUploadTask!)
             }
         }
+    }
+    
+    func downloadImage() {
+        // if image is not downloaded yet, get it
+        // 1
+        if (image.value == nil) {
+            // 2
+            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale:1.0)!
+                    // 3
+                    self.image.value = image
+                }
+            }
+        }
+    }
+    
+    
+    func fetchLikes() {
+        // 1
+        if (likes.value != nil) {
+            return
+        }
+        
+        // 2
+        ParseHelper.likesForPost(self, completionBlock: { (likes: [PFObject]?, error: NSError?) -> Void in
+            // 3
+            let validLikes = likes?.filter { like in like[ParseHelper.ParseLikeFromUser] != nil }
+            
+            // 4
+            self.likes.value = validLikes?.map { like in
+                let fromUser = like[ParseHelper.ParseLikeFromUser] as! PFUser
+                
+                return fromUser
+            }
+        })
     }
 }
